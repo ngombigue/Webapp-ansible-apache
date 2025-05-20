@@ -1,0 +1,11 @@
+---
+- name: "Apache container"
+  hosts: prod
+  become: true
+  tasks:
+    - name: Create Apache container without starting it
+      community.docker.docker_container:
+        name: webapp
+        image: httpd:latest
+        ports:
+          - "80:80"
