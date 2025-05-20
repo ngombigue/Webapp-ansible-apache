@@ -2,6 +2,8 @@
 - name: "Apache container"
   hosts: prod
   become: true
+  vars_files:
+    - files/secrets/credentiels.yml
   tasks:
     - name: Create Apache container without starting it
       community.docker.docker_container:
@@ -9,3 +11,4 @@
         image: httpd:latest
         ports:
           - "80:80"
+
